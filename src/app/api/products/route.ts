@@ -41,10 +41,6 @@ let p
   return Response.json({message:"Ok",data:p},{status:201})
 }
 
-
-
-
-
 export async function GET() {
 
   try {
