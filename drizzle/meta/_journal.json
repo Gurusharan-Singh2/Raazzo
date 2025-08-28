@@ -29,6 +29,34 @@
       "when": 1756207910579,
       "tag": "0003_broken_changeling",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1756376394345,
+      "tag": "0004_new_mach_iv",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1756376482294,
+      "tag": "0005_real_gorilla_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1756376661521,
+      "tag": "0006_cynical_red_shift",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1756377410806,
+      "tag": "0007_magical_gravity",
+      "breakpoints": true
     }
   ]
 }

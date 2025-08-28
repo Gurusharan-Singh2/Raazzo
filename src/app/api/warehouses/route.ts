@@ -40,7 +40,7 @@ export async function POST(req:Request) {
 export async function GET() {
   try {
     
-    const data=await db.select().from(warehouses).orderBy(desc(warehouses.id))
+    const data=await db.select().from(warehouses);
     return Response.json({message:"ok",data},{status:200})
 
   } catch (error) {
@@ -48,3 +48,5 @@ export async function GET() {
   }
   
 }
+
+

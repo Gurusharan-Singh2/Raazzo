@@ -38,3 +38,19 @@ export const warehouses=pgTable("warehouses",{
     pincodeIdx:index("pincode_idx").on(table.pincode)
   }
 })
+
+export const orders=pgTable("orders",{
+  id:serial("id").primaryKey(),
+})
+
+export const deliveryPerson=pgTable("delivery_person",{
+  id:serial("id").primaryKey(),
+  name:varchar("name",{length:100}).notNull(),
+  phone:varchar("phone",{length:13}).notNull(),
+  warehouseId:integer("warehouse_id").references(()=>warehouses.id,{onDelete:"cascade"}).notNull(),
+  orderId:integer("order_id").references(()=>orders.id,{onDelete:"set null"
+  }),
+  updatedAt:timestamp("updated_at").default(sql`CURRENT_TIMESTAMP`),
+  createdAt:timestamp("created_at").default(sql`CURRENT_TIMESTAMP`),
+
+})
