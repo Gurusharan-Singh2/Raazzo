@@ -17,7 +17,7 @@ export async function POST(req:Request) {
       );
     }
 
-    const {name,pincode}=validated.data
+    const {name,pincode}=validated.data;
    let t=await db.insert(warehouses).values({
     name:name,
     pincode:pincode

@@ -11,6 +11,8 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
+import Logo from '../../public/Razzo.png'
+import Image from "next/image"
 
 
 type NavItem = {
@@ -64,9 +66,9 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <Link href="#">
-                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <GalleryVerticalEnd className="size-4" />
-                </div>
+             
+                  <Image src={Logo} width={100} height={100} alt="logo/Razzo"/>
+            
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
