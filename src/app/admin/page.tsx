@@ -1,10 +1,5 @@
-import { Button } from '@/components/ui/button'
-import React from 'react'
+import { SectionCards } from "@/components/section-cards"
 
-const AdminPage = () => {
-  return (
-    <div><Button>Hire Me</Button></div>
-  )
+export default function DashboardPage() {
+  return <SectionCards />
 }
-
-export default AdminPage
