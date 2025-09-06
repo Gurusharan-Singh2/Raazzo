@@ -7,6 +7,8 @@ export const getAllProducts=async()=>{
 
 }
 export const createProduct=async(data:FormData)=>{
+  console.log("From api function :",data);
+  
   const response=await api.post('/products',data,{
     headers:{
       'Content-Type':'multipart/form-data'

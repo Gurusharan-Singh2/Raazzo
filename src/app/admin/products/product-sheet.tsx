@@ -26,7 +26,8 @@ const ProductSheet = ({opensheet,setOpenSheet}:Props) => {
     mutationFn:(data:FormData)=>createProduct(data),
     onSuccess:()=>{
       queryClient.invalidateQueries({queryKey:['products']})
-      alert('Product Created !')
+      alert('Product Created !');
+      setOpenSheet(false)
     }
     
   })
@@ -36,7 +37,9 @@ const ProductSheet = ({opensheet,setOpenSheet}:Props) => {
    formdata.append("name",values.name)
    formdata.append("description",values.description)
    formdata.append("price",String(values.price))
-   formdata.append("image",values.image as FileList[0]);
+    formdata.append("image", (values.image as FileList)[0]);
+
+   
    
     createProductMutation.mutate(formdata);
 

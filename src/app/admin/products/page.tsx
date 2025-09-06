@@ -7,11 +7,12 @@ import { useQuery } from '@tanstack/react-query'
 import { getAllProducts } from '@/http/api'
 import { Product } from '@/types'
 import ProductSheet from './product-sheet'
+import { Spinner } from '@/components/ui/shadcn-io/spinner'
 
 const ProductsPage = () => {
   const [openSheet,setOpenSheet]=useState(false);
 
-  const {data:products}=useQuery<Product[]>({
+  const {data:products,isFetching}=useQuery<Product[]>({
     queryKey:["products"],
     queryFn:getAllProducts
   })
@@ -21,7 +22,8 @@ const ProductsPage = () => {
       <h3 className='text-2xl font-bold tracking-tight'>Products</h3>
       <Button size={'sm'} onClick={()=>setOpenSheet(true)}>Add Product</Button>
     </div>
-    <DataTable data={products || []} columns={columns}/>
+    {isFetching ? <div className='h-[30vh] w-full flex justify-center items-center'><Spinner key={'infinite'} variant={'infinite'} size={50}/></div> :    <DataTable data={products || []} columns={columns}/>
+ }
     <ProductSheet opensheet={openSheet} setOpenSheet={setOpenSheet} />
    </>
   )

@@ -1,20 +1,20 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
-import { productSchema } from '@/lib/validators/productSchema'
 import z from 'zod'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
+import { productSchemaFronted } from '@/lib/validators/productSchemaFronted'
 
 
-export type FormValue=z.input<typeof productSchema>
+export type FormValue=z.input<typeof productSchemaFronted>
 
 const CreateProductForm = ({onSubmit,createProductMutation}:{onSubmit:(formValues:FormValue)=>void,createProductMutation:any}) => {
 
-  const form=useForm<z.infer<typeof productSchema>>({
-    resolver:zodResolver(productSchema),
+  const form=useForm<z.infer<typeof productSchemaFronted>>({
+    resolver:zodResolver(productSchemaFronted),
     defaultValues:{
       name:"",
       description:"",
@@ -79,6 +79,7 @@ onSubmit(values)
               <FormLabel>Price</FormLabel>
               <FormControl>
                <Input
+               placeholder='Enter price of Item ...'
   type="number"
   value={field.value ?? ""}
   onChange={(e) => {
