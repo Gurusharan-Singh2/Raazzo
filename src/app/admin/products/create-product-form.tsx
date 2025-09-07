@@ -7,6 +7,8 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { productSchemaFronted } from '@/lib/validators/productSchemaFronted'
+import toast from 'react-hot-toast'
+import { Loader2 } from 'lucide-react'
 
 
 export type FormValue=z.input<typeof productSchemaFronted>
@@ -27,11 +29,12 @@ const CreateProductForm = ({onSubmit,createProductMutation}:{onSubmit:(formValue
   const handleSubmit=(values :FormValue)=>{
 onSubmit(values)
 
+
   }
   return (
 
 <div className='px-4'>  <Form {...form} >
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
         <FormField
           control={form.control}
           name="name"
@@ -93,7 +96,7 @@ onSubmit(values)
             </FormItem>
           )}
         />
-        <Button type="submit" className='w-full'>{createProductMutation.isPending?"Creating Product ...":"Create"}</Button>
+        <Button type="submit" disabled={createProductMutation.isPending} className='w-full disabled:opacity-65'>{createProductMutation.isPending?<Loader2 className='size-5 animate-spin'/>:"Create"}</Button>
       </form>
     </Form></div>
   )

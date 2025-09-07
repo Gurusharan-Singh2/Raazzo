@@ -10,5 +10,5 @@ export const productSchemaFronted= z.object({
   description: z
     .string({ message: "Product description should be a string" })
     .min(8),
-  price: z.number({ message: "Product price should be a number" }).optional(),
+  price: z.number({ message: "Product price should be a number" }),
 });

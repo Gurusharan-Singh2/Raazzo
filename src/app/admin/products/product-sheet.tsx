@@ -10,15 +10,17 @@ import {
 import  CreateProductForm, { FormValue } from './create-product-form'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { createProduct } from '@/http/api'
-
-interface Props{
-  opensheet :boolean,
-  setOpenSheet:any
-}
+import toast from 'react-hot-toast'
+import { useProductStore } from '@/Store/product/productStore'
+import { error } from 'console'
 
 
 
-const ProductSheet = ({opensheet,setOpenSheet}:Props) => {
+
+
+
+const ProductSheet = () => {
+  const {onClose,isOpen}=useProductStore()
   const queryClient=useQueryClient()
 
   const createProductMutation=useMutation({
@@ -26,8 +28,11 @@ const ProductSheet = ({opensheet,setOpenSheet}:Props) => {
     mutationFn:(data:FormData)=>createProduct(data),
     onSuccess:()=>{
       queryClient.invalidateQueries({queryKey:['products']})
-      alert('Product Created !');
-      setOpenSheet(false)
+      toast.success("Product Created !!!",{duration:2000})
+      onClose();
+    },
+    onError:(error)=>{
+      toast.error(error?.message || "Something went wrong !!!!!")
     }
     
   })
@@ -45,7 +50,7 @@ const ProductSheet = ({opensheet,setOpenSheet}:Props) => {
 
   }
   return (
-    <Sheet open={opensheet} onOpenChange={()=>setOpenSheet((p:boolean)=>!p)}>
+    <Sheet open={isOpen} onOpenChange={onClose}>
   <SheetContent>
     <SheetHeader>
       <SheetTitle>Create Product </SheetTitle>
