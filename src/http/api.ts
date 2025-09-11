@@ -7,7 +7,7 @@ export const getAllProducts=async()=>{
 
 }
 export const createProduct=async(data:FormData)=>{
-  console.log("From api function :",data);
+  // console.log("From api function :",data);
   
   const response=await api.post('/products',data,{
     headers:{
@@ -16,3 +16,44 @@ export const createProduct=async(data:FormData)=>{
   });
   return response.data
 }
+
+
+// Warehouses
+
+export const getAllWarehouses=async()=>{
+  const response=await api.get('/warehouses')
+  return response.data?.data;
+
+}
+export const createWarehouse=async(data:FormData)=>{
+  // console.log("From api function :",data);
+  
+  const response=await api.post('/warehouses',data,{
+    headers:{
+      'Content-Type':'json'
+    }
+  });
+  return response.data
+}
+
+
+/////////// Delivery Persons /////////
+
+
+export const getAllDeliveryPersons=async()=>{
+  const response=await api.get('/delivery-person')
+  return response.data?.data;
+
+}
+export const createDeliveryPerson=async(data:FormData)=>{
+  // console.log("From api function :",data);
+  
+  const response=await api.post('/delivery-person',data,{
+    headers:{
+      'Content-Type':'json'
+    }
+  });
+  return response.data
+}
+
+

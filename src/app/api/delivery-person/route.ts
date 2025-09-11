@@ -37,12 +37,12 @@ const data=  await db.select({id:deliveryPerson.id,
   name:deliveryPerson.name,
   phone:deliveryPerson.phone,
   warehouse:warehouses.name
-}).from(deliveryPerson).leftJoin(warehouses,eq(deliveryPerson.id,warehouses.id)).orderBy(desc(deliveryPerson.id));
+}).from(deliveryPerson).leftJoin(warehouses,eq(deliveryPerson.id,warehouses.id));
   
   return Response.json({
     message:"ok",
     data
-  },{status:201})
+  },{status:200})
 
 } catch (error) {
   return Response.json({
